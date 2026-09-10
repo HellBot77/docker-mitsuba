@@ -41,6 +41,7 @@ jobs:
       - name: Apply patch
         run: |
           sed -i '/max_connections/s/^/\/\//' src/db.rs
+          sed -i '0,/buster AS/s//bookworm AS/' Dockerfile
       - name: Set Docker Hub username
         id: dockerhub-username
         run: echo "username=${DOCKERHUB_REPOSITORY%%/*}" >> $GITHUB_OUTPUT
